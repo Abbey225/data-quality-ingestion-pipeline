@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  weather_dw:
+    image: postgres:15-alpine
+    container_name: weather_quality_warehouse
+    environment:
+      POSTGRES_USER: data_engineer
+      POSTGRES_PASSWORD: password123
+      POSTGRES_DB: weather_warehouse
+    ports:
+      - "5432:5432"
+    volumes:
+      - weather_data:/var/lib/postgresql/data
+
+volumes:
+  weather_data:
